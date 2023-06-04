@@ -1,0 +1,21 @@
+         5	         0	     Prog1	     START	      0000	          
+        10	         0	          	       LDA	      ZERO	    000150
+        15	         3	          	       STA	     INDEX	    0C0021
+        20	         6	      LOOP	       ADD	     INDEX	    180021
+        25	         9	          	       LDA	      ZERO	    000150
+        30	          	.I am a comment
+        35	         C	          	       STA	   ALPHA,X	    0C8024
+        40	         F	          	       LDA	     INDEX	    000021
+        45	        12	          	       ADD	     THREE	    180157
+        50	        15	          	       STA	     INDEX	    0C0021
+        55	        18	          	      COMP	      K300	    280154
+        60	        1B	          	       TIX	    TWENTY	    2C015A
+        65	        1E	          	       JLT	      LOOP	    380006
+        70	        21	     INDEX	      RESW	         1	          
+        75	        24	     ALPHA	      RESW	       100	          
+        80	       150	      ZERO	      BYTE	     X'26'	        26
+        85	       151	          	      COMP	      K300	    280154
+        90	       154	      K300	      WORD	       100	    000064
+        95	       157	     THREE	      BYTE	    C'EOF'	    454F46
+       100	       15A	    TWENTY	      WORD	        20	    000014
+       105	          	          	       END	      0000	          

@@ -1,0 +1,1 @@
+g++ -O3 -g -I. -o SIC.exe assembler.cpp stream.cpp utility.cpp SIC.cpp 

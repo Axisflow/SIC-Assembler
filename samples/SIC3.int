@@ -1,0 +1,51 @@
+         5	      1000	      test	     START	      1000
+        10	      1000	     first	       LDA	      zero
+        15	      1003	          	       STA	       len
+        20	      1006	          	       LDA	      zero
+        25	      1009	          	       STA	    result
+        30	      100C	          	      JSUB	    strlen
+        35	      100F	          	      JSUB	    strcpy
+        40	      1012	          	      JSUB	    strcmp
+        45	      1015	          	       LDA	    result
+        50	      1018	          	         J	       end
+        55	      101B	    strlen	       LDX	       len
+        60	      101E	          	      LDCH	      str2
+        65	      1021	          	      COMP	      null
+        70	      1024	          	       JEQ	      back
+        75	      1027	          	       LDA	       len
+        80	      102A	          	       ADD	       one
+        85	      102D	          	       STA	       len
+        90	      1030	          	         J	    strlen
+        95	      1033	      back	      RSUB	          
+       100	      1036	    strcpy	       LDX	      zero
+       105	      1039	     cloop	      LDCH	      str2
+       110	      103C	          	      STCH	      str1
+       115	      103F	          	       TIX	       len
+       120	      1042	          	       JLT	     cloop
+       125	      1045	          	      RSUB	          
+       130	      1048	    strcmp	       LDX	      zero
+       135	      104B	    cploop	      LDCH	      str2
+       140	      104E	          	      COMP	      str3
+       145	      1051	          	       JLT	     small
+       150	      1054	          	       JGT	       big
+       155	      1057	          	       JEQ	     equal
+       160	      105A	     small	       LDA	     minus
+       165	      105D	          	       STA	    result
+       170	      1060	          	         J	      cend
+       175	      1063	       big	       LDA	      plus
+       180	      1066	          	       STA	    result
+       185	      1069	          	         J	      cend
+       190	      106C	     equal	       TIX	       len
+       195	      106F	          	       JLT	    cploop
+       200	      1072	      cend	      RSUB	          
+       205	      1075	      zero	      WORD	         0
+       210	      1078	       one	      WORD	         1
+       215	      107B	     minus	      WORD	        -1
+       220	      107E	      plus	      WORD	         1
+       225	      1081	       len	      RESW	         1
+       230	      1084	    result	      RESW	         1
+       235	      1087	      str1	      RESB	        10
+       240	      1091	      str2	      BYTE	c'test string'
+       245	      109C	      null	      WORD	         0
+       250	      109F	      str3	      BYTE	c'test string'
+       255	          	       end	       END	     first
