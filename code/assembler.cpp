@@ -387,9 +387,11 @@ bool SICAssembler::parse_input_line(string line, string& label, string& opcode, 
             opcode = upper(tokens[0]);
             operand = tokens[1];
         } else {
-            label = tokens[0];
-            opcode = upper(tokens[1]);
-            operand = "";
+            if(opcode_table.find(upper(tokens[1])) != opcode_table.end() || upper(tokens[1]) == "START" || upper(tokens[1]) == "END") {
+                label = tokens[0];
+                opcode = upper(tokens[1]);
+                operand = "";
+            } else return false;
         }
     } else {
         label = tokens[0];
